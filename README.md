@@ -1,6 +1,8 @@
+# Markov Mockingbird of Twitter dadtellsjokes
+
 Uses a Markov chain to generate sentences based on tweets from [dadtellsjokes](https://mobile.twitter.com/dadtellsjokes)
 
-**requirements**:
+**Requirements**:
 
 [scrapy](https://scrapy.org/)
 
