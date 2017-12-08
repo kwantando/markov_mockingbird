@@ -4,16 +4,15 @@ import scrapy
 class QuotesSpider(scrapy.Spider):
     name = "quotes"
     start_urls = [
-        'http://quotes.toscrape.com/tag/humor/',
+        'https://mobile.twitter.com/dadtellsjokes',
     ]
 
     def parse(self, response):
-        for quote in response.css('div.quote'):
+        for tweet in response.css('div.tweet-text'):
             yield {
-                'text': quote.css('span.text::text').extract_first(),
-                'author': quote.xpath('span/small/text()').extract_first(),
+                'text': tweet.css('div.dir-ltr').extract_first()
             }
 
-        next_page = response.css('li.next a::attr("href")').extract_first()
+        next_page = response.css('div.w-button-more a::attr("href")').extract_first()
         if next_page is not None:
             yield response.follow(next_page, self.parse)
