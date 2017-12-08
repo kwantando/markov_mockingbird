@@ -8,9 +8,9 @@ class QuotesSpider(scrapy.Spider):
     ]
 
     def parse(self, response):
-        for tweet in response.css('div.tweet-text'):
+        for tweet in response.css('.tweet-text > .dir-ltr::text').extract():
             yield {
-                'text': tweet.css('div.dir-ltr').extract_first()
+                '' : tweet
             }
 
         next_page = response.css('div.w-button-more a::attr("href")').extract_first()
