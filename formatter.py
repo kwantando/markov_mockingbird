@@ -1,15 +1,21 @@
 import json
-
+import sys
 
 def main():
 
-    outfile = open('tweets.output', 'w')
+    twitterhandle = sys.argv[1]
 
-    with open('tweets.json') as f:
+    outfile = open(twitterhandle + '.txt', 'w')
+    outfile.truncate()
+    with open(twitterhandle + '.json') as f:
         read_data = f.read()
+
     test_dict = json.loads(read_data)
     for x in test_dict:
-        outfile.write('{}\n'.format(x['text']))
+
+        if x['text'].strip():
+            tweet = x['text'].replace('\n', ' ')
+            outfile.write('{}\n'.format(tweet))
 
 
 if __name__ == "__main__":
