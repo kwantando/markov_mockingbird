@@ -1,8 +1,8 @@
 import scrapy
 
 
-class QuotesSpider(scrapy.Spider):
-    name = "quotes"
+class TwitterSpider(scrapy.Spider):
+    name = "twitter"
     start_urls = [
         'https://mobile.twitter.com/dadtellsjokes',
     ]
